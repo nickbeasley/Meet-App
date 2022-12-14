@@ -2,6 +2,14 @@
 
 To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
+## The W's
+
+- Who—The users of your Meet application. They could be you, your friends, your professional network, or your potential employers.<br>
+- What—A progressive web app with the ability to work offline and a serverless backend developed using a TDD technique.<br>
+- When—Users of this app will be able to use it whenever they want to view upcoming events for a specific city. Your recruiter will be able to see your code immediately on GitHub.<br>
+- Where—The server, in this case, is a serverless function hosted by a cloud provider (e.g., AWS). The application itself is also hosted online to make it shareable and installable. It can be used even when the user is offline. As it’s responsive, it displays well on any device.<br>
+- Why—Serverless is the next generation of cloud infrastructure, PWA provides great user experience and performance, and the TDD technique ensures you have quality code and adequate test coverage. All of these skills, together with data visualization, will distinguish you from other web developers.<br>
+
 ## Key Features:
 
 - Filter events by city.<br>
