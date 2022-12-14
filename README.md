@@ -15,31 +15,79 @@ To build a serverless, progressive web application (PWA) with React using a test
 
 ### FEATURE 1: FILTER EVENTS BY CITY
 
-Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities. --- Given: the user is logged in --- When: the page first loads --- Then: display all events from all cities
+Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities. <br>
 
-Scenario 2: User should see a list of suggestions when they search for a city. --- Given: the user has started typing in the search-bar --- When: "keyup" --- Then: suggestion results populate
+- Given: the user is logged in <br>
+- When: the page first loads <br>
+- Then: display all events from all cities<br>
 
-Scenario 3: User can select a city from the suggested list. --- Given: there are suggestions visible --- When: the user clicks on a city --- Then: the selected city's event page opens
+Scenario 2: User should see a list of suggestions when they search for a city. <br>
+
+- Given: the user has started typing in the search-bar <br>
+- When: "keyup" <br>
+- Then: suggestion results populate<br>
+
+Scenario 3: User can select a city from the suggested list. <br>
+
+- Given: there are suggestions visible <br>
+- When: the user clicks on a city <br>
+- Then: the selected city's event page opens<br>
 
 ### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 
-Scenario 1: An event element is collapsed by default --- Given: an event element is visible. --- When: the event element hasn’t been clicked yet --- Then: the event element is collapsed.
+Scenario 1: An event element is collapsed by default <br>
+
+- Given: an event element is visible. <br>
+- When: the event element hasn’t been clicked yet <br>
+- Then: the event element is collapsed.<br>
+
+Scenario 2: User can expand an event to see its details <br>
+
+- Given: an event element is visible. <br>
+- When: the event element is clicked. <br>
+- Then: the event element is expanded.<br>
+
+Scenario 3: User can collapse an event to hide its details <br>
+
+- Given: The event element is expanded. <br>
+- When: the user clicks it. <br>
+- Then: the element is collapsed.<br>
 
 ### FEATURE 3: SPECIFY NUMBER OF EVENTS
 
-Scenario 1: When user hasn’t specified a number, 32 is the default number --- Given: “number of events” is visible --- When: the user hasn’t specified a number --- Then: the number is 32
+Scenario 1: When user hasn’t specified a number, 32 is the default number <br>
 
-Scenario 2: User can change the number of events they want to see --- Given: “number of events” is visible --- When: the user specifies a number (integer) --- Then: the number becomes the user’s input number.
+- Given: “number of events” is visible <br>
+- When: the user hasn’t specified a number <br>
+- Then: the number is 32<br>
+
+Scenario 2: User can change the number of events they want to see <br>
+
+- Given: “number of events” is visible <br>
+- When: the user specifies a number (integer) <br>
+- Then: the number becomes the user’s input number.<br>
 
 ### FEATURE 4: USE THE APP WHEN OFFLINE
 
-Scenario 1: Show cached data when there’s no internet connection --- Given: there is cached data --- When: there is no internet connection --- Then: the cached data still displays
+Scenario 1: Show cached data when there’s no internet connection <br>
 
-Scenario 2: Show error when user changes the settings (city, time range) --- Given: The user changes the city or time range --- When: There are no events that meet those criteria --- Then: An error message displays “No Results” or similar
+- Given: there is cached data <br>
+- When: there is no internet connection <br>
+- Then: the cached data still displays<br>
+
+Scenario 2: Show error when user changes the settings (city, time range) <br>
+
+- Given: The user changes the city or time range <br>
+- When: There are no events that meet those criteria <br>
+- Then: An error message displays “No Results” or similar<br>
 
 ### FEATURE 5: DATA VISUALIZATION
 
-Scenario 1: Show a chart with the number of upcoming events in each city --- Given: A user is viewing a city --- When: the user clicks on “data visualization” or similar --- Then: a page with graphs of event information/metrics is displayed
+Scenario 1: Show a chart with the number of upcoming events in each city <br>
+
+- Given: A user is viewing a city <br>
+- When: the user clicks on “data visualization” or similar <br>
+- Then: a page with graphs of event information/metrics is displayed<br>
 
 ## User Stories:
 
