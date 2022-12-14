@@ -17,63 +17,63 @@ To build a serverless, progressive web application (PWA) with React using a test
 
 Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities. <br>
 
-- Given: the user is logged in <br>
-- When: the page first loads <br>
-- Then: display all events from all cities<br>
+- Given: The user is logged in <br>
+- When: The page first loads <br>
+- Then: Display all events from all cities<br>
 
 Scenario 2: User should see a list of suggestions when they search for a city. <br>
 
-- Given: the user has started typing in the search-bar <br>
+- Given: The user has started typing in the search-bar <br>
 - When: "keyup" <br>
-- Then: suggestion results populate<br>
+- Then: Suggestion results populate<br>
 
 Scenario 3: User can select a city from the suggested list. <br>
 
-- Given: there are suggestions visible <br>
-- When: the user clicks on a city <br>
-- Then: the selected city's event page opens<br>
+- Given: There are suggestions visible <br>
+- When: The user clicks on a city <br>
+- Then: The selected city's event page opens<br>
 
 ### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 
 Scenario 1: An event element is collapsed by default <br>
 
-- Given: an event element is visible. <br>
-- When: the event element hasn’t been clicked yet <br>
-- Then: the event element is collapsed.<br>
+- Given: An event element is visible. <br>
+- When: The event element hasn’t been clicked yet <br>
+- Then: The event element is collapsed.<br>
 
 Scenario 2: User can expand an event to see its details <br>
 
-- Given: an event element is visible. <br>
-- When: the event element is clicked. <br>
-- Then: the event element is expanded.<br>
+- Given: An event element is visible. <br>
+- When: The event element is clicked. <br>
+- Then: The event element is expanded.<br>
 
 Scenario 3: User can collapse an event to hide its details <br>
 
 - Given: The event element is expanded. <br>
-- When: the user clicks it. <br>
-- Then: the element is collapsed.<br>
+- When: The user clicks it. <br>
+- Then: The element is collapsed.<br>
 
 ### FEATURE 3: SPECIFY NUMBER OF EVENTS
 
 Scenario 1: When user hasn’t specified a number, 32 is the default number <br>
 
 - Given: “number of events” is visible <br>
-- When: the user hasn’t specified a number <br>
-- Then: the number is 32<br>
+- When: The user hasn’t specified a number <br>
+- Then: The number is 32<br>
 
 Scenario 2: User can change the number of events they want to see <br>
 
 - Given: “number of events” is visible <br>
-- When: the user specifies a number (integer) <br>
-- Then: the number becomes the user’s input number.<br>
+- When: The user specifies a number (integer) <br>
+- Then: The number becomes the user’s input number.<br>
 
 ### FEATURE 4: USE THE APP WHEN OFFLINE
 
 Scenario 1: Show cached data when there’s no internet connection <br>
 
-- Given: there is cached data <br>
-- When: there is no internet connection <br>
-- Then: the cached data still displays<br>
+- Given: There is cached data <br>
+- When: There is no internet connection <br>
+- Then: The cached data still displays<br>
 
 Scenario 2: Show error when user changes the settings (city, time range) <br>
 
@@ -86,8 +86,8 @@ Scenario 2: Show error when user changes the settings (city, time range) <br>
 Scenario 1: Show a chart with the number of upcoming events in each city <br>
 
 - Given: A user is viewing a city <br>
-- When: the user clicks on “data visualization” or similar <br>
-- Then: a page with graphs of event information/metrics is displayed<br>
+- When: The user clicks on “data visualization” or similar <br>
+- Then: A page with graphs of event information/metrics is displayed<br>
 
 ## User Stories:
 
