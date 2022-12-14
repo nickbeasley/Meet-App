@@ -14,7 +14,7 @@ To build a serverless, progressive web application (PWA) with React using a test
 ## User Stories:
 
 ● As a user, I would like to be able to filter events by city so that I can see the list of events that take place in that city.<br>
-● As a user, I would like to be able to show/hide event details so that I can see more/less information about an event.
+● As a user, I would like to be able to show/hide event details so that I can see more/less information about an event.<br>
 ● As a user, I would like to be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.<br>
 ● Asauser,IwouldliketobeabletousetheappwhenofflinesothatIcanseetheeventsI viewed the last time I was online.<br>
 ● As a user, I would like to be able to add the app shortcut to my home screen so that I can open the app faster.<br>
