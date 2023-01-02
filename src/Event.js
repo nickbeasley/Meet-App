@@ -1,43 +1,50 @@
 import React, { Component } from "react";
 
 class Event extends Component {
-  state = { collapsed: true };
-  toggleDetails = () => {
-    this.setState((prevState) => ({
-      collapsed: !prevState.collapsed,
-    }));
+  state = {
+    detailsHidden: true,
+  };
+
+  onClickedShowDetails = () => {
+    this.setState({ detailsHidden: false });
+  };
+
+  onClickedHideDetails = () => {
+    this.setState({ detailsHidden: true });
   };
 
   render() {
     const { event } = this.props;
-    const { collapsed } = this.state;
 
     return (
-      <div>
-        <h1 className="summary">{event.summary}</h1>
-        <p className="event-start">
-          {new Date(event.start.dateTime).toString()}
-        </p>
-        <p className="event-location">
-          {`@${event.summary} | ${event.location}`}
-        </p>
-
-        {!collapsed && (
-          <>
-            <h2 className="about">About event:</h2>
-            <a className="link" href={event.htmlLink}>
+      <div className="Event">
+        <h2 className="summary">{event.summary}</h2>
+        <div className="start-time">{`${event.start.dateTime} (${event.start.timeZone})`}</div>
+        {this.state.detailsHidden === true ? (
+          <button
+            type="button"
+            className="show-details"
+            onClick={this.onClickedShowDetails}
+          >
+            Show details
+          </button>
+        ) : (
+          <div className="about-event">
+            <a className="link-to-google" href={event.htmlLink}>
               See details on Google Calendar
             </a>
-            <p className="description">{event.description}</p>
-          </>
+            <div className="description">{event.description}</div>
+            <button
+              className="hide-details"
+              type="button"
+              onClick={this.onClickedHideDetails}
+            >
+              Hide details
+            </button>
+          </div>
         )}
-
-        <button className="details-button" onClick={() => this.toggleDetails()}>
-          {collapsed ? "show" : "hide"} details
-        </button>
       </div>
     );
   }
 }
-
 export default Event;
