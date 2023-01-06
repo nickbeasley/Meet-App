@@ -47,7 +47,7 @@ class App extends Component {
     });
   };
   updateNumberOfEvents = (number) => {
-    this.updateEvents({ undefined, number });
+    this.updateEvents(undefined, number);
   };
 
   render() {
