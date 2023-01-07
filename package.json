@@ -6,11 +6,13 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
+    "axios": "^1.2.2",
+    "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
+    "web-vitals": "^3.1.0",
     "workbox-background-sync": "^6.5.4",
     "workbox-broadcast-update": "^6.5.4",
     "workbox-cacheable-response": "^6.5.4",
@@ -22,9 +24,7 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4",
-    "axios": "^0.24.0",
-    "nprogress": "^0.2.0"
+    "workbox-streams": "^6.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,9 +53,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.20.12",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
+    "axios": "^1.2.2",
     "enzyme": "^3.11.0",
     "gh-pages": "^4.0.0",
-    "axios": "^0.24.0"
+    "jest": "23.6.0",
+    "jest-cucumber": "^3.0.1",
+    "jest-enzyme": "^7.1.2"
   }
 }
