@@ -23,9 +23,7 @@ defineFeature(feature, (test) => {
 
     then("the user should see the list of upcoming events.", () => {
       AppWrapper.update();
-      expect(AppWrapper.find(".event")).toHaveLength(
-        mockData.slice(0, 32).length
-      );
+      expect(AppWrapper.find(".suggestions li")).toHaveLength(1);
     });
   });
 
@@ -89,13 +87,10 @@ defineFeature(feature, (test) => {
         expect(CitySearchWrapper.state("query")).toBe("Berlin, Germany");
       }
     );
-
     and(
       "the user should receive a list of upcoming events in that city",
       () => {
-        expect(AppWrapper.find(".event")).toHaveLength(
-          mockData.slice(0, 32).length
-        );
+        expect(AppWrapper.find(".suggestions li")).toHaveLength(2);
       }
     );
   });

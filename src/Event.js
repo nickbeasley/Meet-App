@@ -17,7 +17,7 @@ class Event extends Component {
     const { event } = this.props;
 
     return (
-      <div className="Event">
+      <div className="event">
         <h2 className="summary">{event.summary}</h2>
         <div className="start-time">{`${event.start.dateTime} (${event.start.timeZone})`}</div>
         {this.state.detailsHidden === true ? (
