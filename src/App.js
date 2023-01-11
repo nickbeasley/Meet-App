@@ -7,6 +7,8 @@ import NumberOfEvents from "./NumberOfEvents";
 
 import { getEvents, extractLocations } from "./api";
 
+import Logo from "./logo.svg";
+
 class App extends Component {
   state = {
     events: [],
@@ -52,6 +54,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Meet Up</h1>
+        <img src={Logo} alt="My Logo" className="logo" />
+
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
