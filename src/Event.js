@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { WarningAlert } from "./Alert";
 
 class Event extends Component {
   state = {
     detailsHidden: true,
+    infoText: "",
   };
 
   onClickedShowDetails = () => {
@@ -11,6 +13,12 @@ class Event extends Component {
 
   onClickedHideDetails = () => {
     this.setState({ detailsHidden: true });
+  };
+
+  warningMessage = () => {
+    if (this.props.event.description === undefined) {
+      return <WarningAlert text="No description available" />;
+    }
   };
 
   render() {
