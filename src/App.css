@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 html {
-  background-color: lightblue;
+  background-color: lightcyan;
 }
 .App {
   text-align: center;
@@ -83,11 +83,8 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   position: relative;
 }
-
 .details-btn {
   position: absolute;
   right: 5px;
