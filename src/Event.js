@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { WarningAlert } from "./Alert";
+import moment from "moment";
 
 class Event extends Component {
   state = {
@@ -27,7 +28,9 @@ class Event extends Component {
     return (
       <div className="event">
         <h2 className="summary">{event.summary}</h2>
-        <div className="start-time">{`${event.start.dateTime} (${event.start.timeZone})`}</div>
+        <div className="start-time">
+          {moment(event.start.dateTime).format("MMMM Do YYYY, h:mm a")}
+        </div>
         {this.state.detailsHidden === true ? (
           <button
             type="button"
