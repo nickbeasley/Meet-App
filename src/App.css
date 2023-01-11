@@ -85,6 +85,14 @@ input[type="number"] {
   text-align: center;
   position: relative;
 }
+.EventList {
+  column-count: 3;
+}
+
+.EventList li {
+  break-inside: avoid;
+}
+
 .details-btn {
   position: absolute;
   right: 5px;
