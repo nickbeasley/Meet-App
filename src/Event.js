@@ -31,6 +31,7 @@ class Event extends Component {
         <div className="start-time">
           {moment(event.start.dateTime).format("MMMM Do YYYY, h:mm a")}
         </div>
+        <div className="location">{event.location}</div>
         {this.state.detailsHidden === true ? (
           <button
             type="button"

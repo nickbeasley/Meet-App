@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import moment from "moment";
 import Event from "../Event";
 import { mockData } from "../mock-data";
 
@@ -27,9 +28,10 @@ describe("<Event /> component", () => {
   });
 
   test("render correct start time", () => {
-    expect(EventWrapper.find(".start-time").text()).toBe(
-      `${event.start.dateTime} (${event.start.timeZone})`
+    const formattedStartTime = moment(event.start.dateTime).format(
+      "MMMM Do YYYY, h:mm a"
     );
+    expect(EventWrapper.find(".start-time").text()).toEqual(formattedStartTime);
   });
 
   test('render "show-details" button', () => {
