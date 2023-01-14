@@ -99,7 +99,11 @@ input[type="number"] {
 .EventList li {
   break-inside: avoid;
 }
-
+@media only screen and (max-width: 600px) {
+  .EventList {
+    column-count: 1;
+  }
+}
 .details-btn {
   position: absolute;
   right: 5px;
