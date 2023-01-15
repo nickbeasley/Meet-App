@@ -8,7 +8,9 @@ import NumberOfEvents from "./NumberOfEvents";
 import Logo from "./logo.svg";
 
 import WelcomeScreen from "./WelcomeScreen";
-import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+
+// import { checkToken } from "./api";
+import { getEvents, extractLocations, getAccessToken } from "./api";
 
 import { OfflineAlert } from "./Alert";
 
@@ -21,25 +23,29 @@ class App extends Component {
     showWelcomeScreen: undefined,
   };
 
-  async componentDidMount() {
+  // async componentDidMount() {
+  //   this.mounted = true;
+  //   const accessToken = localStorage.getItem("access_token");
+  //   const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+  //   const searchParams = new URLSearchParams(window.location.search);
+  //   const code = searchParams.get("code");
+  //   this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+  //   if ((code || isTokenValid) && this.mounted) {
+  //     getEvents().then((events) => {
+  //       if (this.mounted) {
+  //         this.setState({ events, locations: extractLocations(events) });
+  //       }
+  //     });
+  //   }
+  // }
+  componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem("access_token");
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get("code");
-    const isLocal = window.location.href.startsWith("http://localhost")
-      ? true
-      : code || isTokenValid;
-    this.setState({ showWelcomeScreen: !isLocal });
-    if (isLocal && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
-        }
-      });
-    }
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ events, locations: extractLocations(events) });
+      }
+    });
   }
-
   componentWillUnmount() {
     this.mounted = false;
   }
