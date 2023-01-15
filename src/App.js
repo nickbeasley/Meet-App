@@ -5,9 +5,12 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 
-import { getEvents, extractLocations } from "./api";
-
 import Logo from "./logo.svg";
+
+import WelcomeScreen from "./WelcomeScreen";
+import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+
+import { OfflineAlert } from "./Alert";
 
 class App extends Component {
   state = {
@@ -15,15 +18,26 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     selectedLocation: "all",
+    showWelcomeScreen: undefined,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    const isLocal = window.location.href.startsWith("http://localhost")
+      ? true
+      : code || isTokenValid;
+    this.setState({ showWelcomeScreen: !isLocal });
+    if (isLocal && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -51,19 +65,34 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
-        <h1>Meet Up</h1>
-        <img src={Logo} alt="My Logo" className="logo" />
-
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-        <EventList events={this.state.events} />
-      </div>
-    );
+    if (this.state.showWelcomeScreen === undefined)
+      return (
+        <div className="App">
+          <h1>Meet Up</h1>
+          <img src={Logo} alt="My Logo" className="logo" />
+          <div className="OfflineAlert">
+            {!navigator.onLine && (
+              <OfflineAlert
+                text={
+                  "You are currently offline. The list of events may not be up-to-date."
+                }
+              />
+            )}
+          </div>
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+          <EventList events={this.state.events} />
+          <WelcomeScreen
+            showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => {
+              getAccessToken();
+            }}
+          />
+        </div>
+      );
   }
 }
 
