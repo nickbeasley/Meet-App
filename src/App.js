@@ -6,6 +6,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 
 import Logo from "./logo.svg";
+import image from "./Meet-Up.png";
 
 import WelcomeScreen from "./WelcomeScreen";
 
@@ -38,7 +39,7 @@ class App extends Component {
   //     });
   //   }
   // }
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
@@ -76,6 +77,8 @@ class App extends Component {
         <div className="App">
           <h1>Meet Up</h1>
           <img src={Logo} alt="My Logo" className="logo" />
+          <img src={image} alt="logo" className="logo-two" />
+
           <div className="OfflineAlert">
             {!navigator.onLine && (
               <OfflineAlert

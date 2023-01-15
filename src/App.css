@@ -11,13 +11,19 @@ html {
   box-sizing: border-box;
 }
 .logo {
-  width: 50px; /* or any other value */
-  height: 50px; /* or any other value */
-  position: absolute; /* if you want to position it relative to a parent container */
-  top: 20px; /* or any other value */
-  left: 20px; /* or any other value */
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
-
+.logo-two {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 ul {
   padding: 0;
   list-style: none;
