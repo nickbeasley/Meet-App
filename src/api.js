@@ -36,7 +36,7 @@ export const checkToken = async (accessToken) => {
 
 export const getEvents = async () => {
   NProgress.start();
-  if (window.location.href.startsWith("http://localhost")) {
+  if (window.location.href.indexOf("localhost") > -1) {
     NProgress.done();
     return mockData;
   }
@@ -45,22 +45,22 @@ export const getEvents = async () => {
     NProgress.done();
     return data ? JSON.parse(data).events : [];
   }
-
   const token = await getAccessToken();
   if (token) {
     removeQuery();
-    const url =
-      "https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
-      "/" +
-      token;
-    const result = await axios.get(url);
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+    const url = `https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
+    try {
+      const response = await axios.get(url);
+      let events = await response.data.events;
+      localStorage.setItem("lastEvents", JSON.stringify(events));
+      let locations = extractLocations(events);
       localStorage.setItem("locations", JSON.stringify(locations));
+      NProgress.done();
+      return events;
+    } catch (error) {
+      NProgress.done();
+      console.error(error.response);
     }
-    NProgress.done();
-    return result.data.events;
   }
 };
 
@@ -85,18 +85,19 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    "https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/token" +
-      "/" +
-      encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
+  try {
+    const encodeCode = encodeURIComponent(code);
 
-  access_token && localStorage.setItem("access_token", access_token);
-
-  return access_token;
+    const response = await fetch(
+      `https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/token${encodeCode}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const { access_token } = await response.json();
+    access_token && localStorage.setItem("access_token", access_token);
+    return access_token;
+  } catch (error) {
+    error.json();
+  }
 };
