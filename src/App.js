@@ -10,8 +10,7 @@ import image from "./Meet-Up.png";
 
 import WelcomeScreen from "./WelcomeScreen";
 
-// import { checkToken } from "./api";
-import { getEvents, extractLocations, getAccessToken } from "./api";
+import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
 
 import { OfflineAlert } from "./Alert";
 
