@@ -23,12 +23,15 @@ export const getAccessToken = async () => {
 };
 
 export const checkToken = async (accessToken) => {
-  const result = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  )
-    .then((res) => res.json())
-    .catch((error) => error.json());
-  return result;
+  try {
+    const result = await fetch(
+      `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+    ).then((res) => res.json());
+    return result;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
 };
 
 export const getEvents = async () => {
