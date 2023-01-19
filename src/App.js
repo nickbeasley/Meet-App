@@ -22,7 +22,7 @@ class App extends Component {
     selectedLocation: "all",
     showWelcomeScreen: undefined,
   };
-
+  // THIS IS FROM THE CF DOCUMENTATION. It does not work.
   // async componentDidMount() {
   //   this.mounted = true;
   //   const accessToken = localStorage.getItem("access_token");
@@ -38,8 +38,12 @@ class App extends Component {
   //     });
   //   }
   // }
+  //THIS WORKS
   async componentDidMount() {
     this.mounted = true;
+    const accessToken = localStorage.getItem("access_token"); // These 3 lines are from CF documentation but they work when added
+    const searchParams = new URLSearchParams(window.location.search); // These 3 lines are from CF documentation but they work when added
+    const code = searchParams.get("code"); // These 3 lines are from CF documentation but they work when added
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events, locations: extractLocations(events) });
