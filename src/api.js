@@ -5,9 +5,7 @@ import { mockData } from "./mock-data";
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem("access_token");
-
   const tokenCheck = accessToken && (await checkToken(accessToken));
-
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
@@ -30,13 +28,12 @@ export const checkToken = async (accessToken) => {
   )
     .then((res) => res.json())
     .catch((error) => error.json());
-
   return result;
 };
 
 export const getEvents = async () => {
   NProgress.start();
-  if (window.location.href.indexOf("localhost") > -1) {
+  if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
   }
@@ -85,19 +82,14 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
-  try {
-    const encodeCode = encodeURIComponent(code);
-
-    const response = await fetch(
-      `https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/token${encodeCode}`
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const { access_token } = await response.json();
-    access_token && localStorage.setItem("access_token", access_token);
-    return access_token;
-  } catch (error) {
-    error.json();
-  }
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    `https://e3tge1o28l.execute-api.us-east-1.amazonaws.com/dev/api/token${encodeCode}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+  access_token && localStorage.setItem("access_token", access_token);
+  return access_token;
 };
