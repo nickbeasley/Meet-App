@@ -24,6 +24,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import EventGenre from "./EventGenre";
+
 class App extends Component {
   state = {
     events: [],
@@ -117,7 +119,8 @@ class App extends Component {
             updateEvents={this.updateEvents}
           />
           <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-          <EventList events={this.state.events} />
+
+          <EventGenre events={this.state.events} />
           <ResponsiveContainer height={400}>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
@@ -132,6 +135,7 @@ class App extends Component {
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
           </ResponsiveContainer>
+          <EventList events={this.state.events} />
           <WelcomeScreen
             showWelcomeScreen={this.state.showWelcomeScreen}
             getAccessToken={() => {
