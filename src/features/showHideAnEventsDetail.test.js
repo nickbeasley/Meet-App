@@ -11,6 +11,21 @@ defineFeature(feature, (test) => {
   let AppWrapper;
   //TEST 1
   test("An event element is collapsed by default.", ({ given, when, then }) => {
+    const { ResizeObserver } = window;
+
+    beforeEach(() => {
+      delete window.ResizeObserver;
+      window.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+    });
+
+    afterEach(() => {
+      window.ResizeObserver = ResizeObserver;
+      jest.restoreAllMocks();
+    });
     given(
       "A collapsed event element containing events is loaded on the page.",
       () => {}

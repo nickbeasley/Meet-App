@@ -5,7 +5,6 @@ describe("show/hide an event details", () => {
   let page;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     browser = await puppeteer.launch({
       headless: true,
       slowMo: 50,
@@ -13,7 +12,7 @@ describe("show/hide an event details", () => {
     page = await browser.newPage();
     await page.goto("http://localhost:3000/");
     await page.waitForSelector(".event");
-  });
+  }, 100000); // 100000 is the timeout
 
   afterAll(() => {
     browser.close();
@@ -42,7 +41,6 @@ describe("filter events by city", () => {
   let page;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     browser = await puppeteer.launch({
       headless: true,
       slowMo: 50,
@@ -50,7 +48,7 @@ describe("filter events by city", () => {
     page = await browser.newPage();
     await page.goto("http://localhost:3000/");
     await page.waitForSelector(".event");
-  });
+  }, 100000); // 100000 is the timeout
 
   afterAll(() => {
     browser.close();
